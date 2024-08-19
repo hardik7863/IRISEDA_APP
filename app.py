@@ -76,9 +76,8 @@ else:
 #Show Summary
 if st.checkbox("Show Bar Plot with Matplotlib"):
     fig, ax = plt.subplots()
-    data.plot(kind='bar', ax=ax)
+    data['species'].value_counts().plot(kind='bar', ax=ax)
     st.pyplot(fig)
-#Correlation
 
 
 if st.checkbox("Show Correlation Plot with Matplotlib"):
@@ -95,12 +94,17 @@ if st.checkbox("Show Correlation Plot with Matplotlib"):
     st.pyplot(fig)
 
     #Correlation
-if st.checkbox("Show Correlation Plot "):
+if st.checkbox("Show Correlation Plot"):
+    # Select only numeric columns and drop rows with missing values
+    numeric_data = data.select_dtypes(include=['number']).dropna()
+    
     # Generate the heatmap
-    corr_plot = sns.heatmap(data.corr(), annot=True, cmap="coolwarm")
+    fig, ax = plt.subplots()
+    corr_plot = sns.heatmap(numeric_data.corr(), annot=True, cmap="coolwarm", ax=ax)
 
     # Use st.pyplot() to display the plot
-    st.pyplot(corr_plot.figure)
+    st.pyplot(fig)
+
 
 # Group
 if st.checkbox("Show Bar Chart Plot"):
