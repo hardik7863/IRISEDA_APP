@@ -150,13 +150,26 @@ if species_type =="versicolor":
     st.image(load_image('imgs/iris_versicolor.jpg'))
 
 #Show Image
-if st.checkbox("Show/Hide Image"):
+if st.checkbox("Setosa Image"):
     my_image =load_image("iris_setosa.jpg")
     enh =ImageEnhance.Contrast(my_image)
     num=st.slider("Set Image Contrast",1.0,4.0)
     img_width=st.slider("SetImage Width",300,500)
     st.image(enh.enhance(num),width=img_width)
 
+if st.checkbox("Virginica Image"):
+    my_image =load_image("imgs/iris_virginica.jpg")
+    enh =ImageEnhance.Contrast(my_image)
+    num=st.slider("Set Image Contrast",1.0,4.0)
+    img_width=st.slider("SetImage Width",300,500)
+    st.image(enh.enhance(num),width=img_width)
+    
+if st.checkbox("Versicolor Image"):
+    my_image =load_image("imgs/iris_versicolor.jpg")
+    enh =ImageEnhance.Contrast(my_image)
+    num=st.slider("Set Image Contrast",1.0,4.0)
+    img_width=st.slider("SetImage Width",300,500)
+    st.image(enh.enhance(num),width=img_width)
 #About
 if st.button("About App"):
     st.text("Iris EDA APP")
